@@ -1,0 +1,29 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block title %}
+	Acccount	
+{% endblock %}
+
+{% block page %}
+
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel">
+			<div class="panel-heading bg-blue">
+				<h4 class="panel-title text-center text-white">
+					Account
+				</h4>
+			</div>
+				<div class="panel-body">
+					<form method="POST">
+						{% csrf_token %}
+						{% bootstrap_form user_form %}
+						{% bootstrap_form restaurant_form %}
+						<button type="submit" class="btn btn-pink">Update</button>
+					</form>
+				</div>
+		</div>
+	</div>
+
+{% endblock %}
