@@ -214,9 +214,9 @@ def driver_get_revenue(request):
 		orders = Order.objects.filter(
 				driver = driver,
 				status = Order.DELIVERED,
-				created_at__year = day.year,
-				created_at__month = day.month,
-				created_at__day = day.day,
+				created__year = day.year,
+				created__month = day.month,
+				created__day = day.day,
 			)
 		revenue[day.strftime("%a")] = sum(order.total for order in orders)
 
