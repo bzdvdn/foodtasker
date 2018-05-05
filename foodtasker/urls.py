@@ -58,4 +58,12 @@ urlpatterns = [
     url(r'^api/customer/meals/(?P<restaurant_id>\d+)/$', api.customer_get_meals),
     url(r'^api/customer/order/add/$', api.customer_add_order),
     url(r'^api/customer/order/latest/$', api.customer_get_latest_order),
+
+    #api for drivers
+    url(r'api/driver/orders/ready/$', api.driver_get_ready_orders, name="driver_get_ready_orders"),
+    url(r'api/driver/order/pick/$', api.driver_pick_order),
+    url(r'api/driver/order/latest/$', api.driver_get_latest_order),
+    url(r'api/driver/order/complete/$', api.driver_complete_order),
+    url(r'api/driver/revenue/$', api.driver_get_revenue),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
