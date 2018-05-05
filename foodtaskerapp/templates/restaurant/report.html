@@ -90,12 +90,12 @@
 					</h4>
 				</div>
 				<div class="panel-body">
-					<canvas id="mealChart" height="349 "></canvas>
+					<canvas id="mealChart" height="235 "></canvas>
 					<script>
 						
 						var ctx = document.getElementById("mealChart").getContext("2d");
 						var data = {
-							labels: {{ meals.labels|safe }}
+							labels: {{ meals.labels|safe }},
 							datasets: [
 								{
 									backgroundColor: [
@@ -122,12 +122,12 @@
 					</h4>
 				</div>
 				<div class="panel-body">
-					<canvas id="driverChart" height="349 "></canvas>
+					<canvas id="driverChart" height="235 "></canvas>
 					<script>
 						
 						var ctx = document.getElementById("driverChart").getContext("2d");
 						var data = {
-							labels: {{ drivers.labels|safe }}
+							labels: {{ drivers.labels|safe }},
 							datasets: [
 								{
 									backgroundColor: [
