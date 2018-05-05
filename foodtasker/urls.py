@@ -46,11 +46,13 @@ urlpatterns = [
     url(r'^restaurant/order/$', foodtasker_app_views.restaurant_order, name='restaurant-order'),
     url(r'^restaurant/report/$', foodtasker_app_views.restaurant_report, name='restaurant-report'),
 
+
     #Sign in/ Sign up/ /Sign out
     url(r'^api/social/', include('rest_framework_social_oauth2.urls')),
     # /convert-token(sign in/ sign up)
     # /revoke-token(sign out)
 
+    url(r'api/restaurant/order/notification/(?P<last_request_time>.+)/$', api.restaurant_order_notification, name='restaurant_order_notification'),
     #api for customeres
     url(r'^api/customer/restaurants/$', api.customer_get_restaurant),
     url(r'^api/customer/meals/(?P<restaurant_id>\d+)/$', api.customer_get_meals),

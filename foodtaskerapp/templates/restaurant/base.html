@@ -2,6 +2,31 @@
 {% load static %}
 
 {% block title %} Restaurant {% endblock %}
+
+{% block script %}
+
+<script>
+	$(document).ready(function() {
+		var now = new Data();
+		setInterval(function() {
+			$.ajax({
+				url: '/api/restaurant/order/notification/' + now.toISOString() + '/',
+				method: "GET",
+				success: function(data) {
+					if (data['notification'] == 0) {
+						$('.badge').text('');
+					} else {
+						$('.badge').text(data['notification']);
+					}
+				}
+			})
+		}, 3000)
+	})
+
+</script>
+
+{% endblock %}
+
 {% block sidebar %}
 
 	{% url 'restaurant-order' as restaurant_order_url_ %}
@@ -15,12 +40,16 @@
 		<br>
 		<h4>Hi, {{ request.user.get_full_name }} </h4>
 		<h5>	{{ request.user.restaurant.name }} </h5>
+		<h5>	{{ request.user.restaurant.id }} </h5>
 	</div>
 
 	<div class="list-group">
 		<span class="text-uppercase">Dashbooard</span>
 		<a href="{% url 'restaurant-order' %}" class="list-group-item
-		 {% if request.path == restaurant_order_url_ %} active {% endif %}">Orders</a>
+		 {% if request.path == restaurant_order_url_ %} active {% endif %}">
+		 Orders
+		<span class="badge"></span>
+		 </a>
 		<a href="{% url 'restaurant-meal' %}" class="list-group-item 
 		{% if request.path == restaurant_meal_url_ %} active {% endif %}">Meals</a>
 		<a href="{% url 'restaurant-report' %}" class="list-group-item 
