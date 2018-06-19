@@ -107,6 +107,7 @@ def customer_get_latest_order(request):
 
 
 	return JsonResponse({"order": order})
+
 ############
 # RESTAURANT
 ###########

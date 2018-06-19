@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from foodtaskerapp.forms import UserForm, RestaurantForm, UserFormForEdit, MealForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from foodtaskerapp.models import Meal, Order, OrderDetails, Driver
 
 from django.db.models import Sum, Count, Case, When
+
+from foodtaskerapp.forms import UserForm, RestaurantForm, UserFormForEdit, MealForm
+from foodtaskerapp.models import Meal, Order, OrderDetails, Driver
+
 # Create your views here.
 def home(request):
 	return redirect(restaurant_home)
@@ -73,8 +75,7 @@ def restaurant_edit_meal(request, meal_id):
     return render(request, 'restaurant/edit_meal.html', {
         "form": form
     })
-
-restaurant_edit_meal
+s
 
 @login_required(login_url='restaurant-sign-in')
 def restaurant_order(request):
